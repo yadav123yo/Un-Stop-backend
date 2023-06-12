@@ -3,23 +3,23 @@ const app = express();
 const { seatRouter } = require("./Routes/Reserve");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.DB_URL);
+    const connectionStr =process.env.DB_URl; // Replace with your MongoDB connection string
+    await mongoose.connect(connectionStr, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log('Connected to MongoDB');
   } catch (error) {
-    console.log(error);
+    console.error('Error connecting to MongoDB:', error);
     process.exit(1);
   }
 };
 
-
 app.use(cors());
 app.use(express.json());
 app.use("/seats", seatRouter);
-
 
 connectDB().then(() => {
   app.listen(PORT, () => {
