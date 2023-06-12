@@ -12,9 +12,8 @@ seatRouter.get("/", async (req, res) => {
   }
 });
 
-// This Route is created for booking seates.
-// First of all it is getting all availible seats and if availible seats are greater then or equal to 
-// input then it proceed further otherwise it returns seats not availible.
+// This Route used for Booking Seats
+
 
 seatRouter.patch("/book", async (req, res) => {
   try {
@@ -27,8 +26,7 @@ seatRouter.patch("/book", async (req, res) => {
       let reservedSeats;
       let count = 0;
 
-// In this loop it is checking for seats availible in one line.
-// if seats are availible then it returns seat numbers.
+
 
       for (let i = 0; i <= seat.length; i = i + 7) {
         let arr = [];
@@ -58,8 +56,7 @@ seatRouter.patch("/book", async (req, res) => {
         }
       }
 
-// If no seats are availible in one line then it will go in this condition and book nearest seats.
-// and it will return seats number as output.
+
       if (count === 0) {
         let i = 0;
         let j = 0;
@@ -96,8 +93,7 @@ seatRouter.patch("/book", async (req, res) => {
 });
 
 
-// This Route is created for adding new seats.
-// This is only accessible for admins.
+
 seatRouter.post("/add", async (req, res) => {
   try {
     const seat = await seatModel.insertMany(req.body);
@@ -108,7 +104,6 @@ seatRouter.post("/add", async (req, res) => {
 });
 
 
-// This Route is created for reset all seats availible.
 // This is only accessible for admins.
 seatRouter.patch("/reset", async (req, res) => {
   try {
