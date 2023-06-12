@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const connectDB = async () => {
   try {
-    const connectionStr = `mongodb+srv://yadav123yo:TSrGhXr9JLakgGRK@cluster0.tayxi0r.mongodb.net/Un_Stop?retryWrites=true&w=majority`; 
+    const connectionStr = `mongodb+srv://yadav123yo:TSrGhXr9JLakgGRK@cluster0.tayxi0r.mongodb.net/un_stop?retryWrites=true&w=majority`; 
     await mongoose.connect(connectionStr, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('Connected to MongoDB');
   } catch (error) {

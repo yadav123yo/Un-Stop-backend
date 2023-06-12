@@ -12,6 +12,7 @@ seatRouter.get("/", async (req, res) => {
   }
 });
 
+
 // This Route used for Booking Seats
 
 
